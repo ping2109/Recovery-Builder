@@ -1,5 +1,5 @@
 env:
-    MANIFEST: https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11.0
+    MANIFEST: https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11
     DT_LINK: https://github.com/ping2109/device_xiaomi_spes-twrp.git -b working
     DEVICE: spes
     OEM: xiaomi
