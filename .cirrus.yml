@@ -67,8 +67,7 @@ task:
       - $EXTRA_CMD
       - export OF_MAINTAINER="ping2109"
       - export ALLOW_MISSING_DEPENDENCIES=true
-      - . build/envsetup.sh
-      - . $DT_PATH/vendorsetup.sh
+      - source build/envsetup.sh
       - lunch $LUNCH
       - mka -j16 $TARGET
      
