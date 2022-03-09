@@ -5,7 +5,7 @@ env:
     OEM: samsung
     DT_PATH: device/$OEM/$DEVICE
     TARGET: recoveryimage
-    EXTRA_CMD: git clone https://gitlab.com/OrangeFox/misc/theme.git bootable/recovery/gui/theme && curl -O https://github.com/ping2109/ping2109.github.io/raw/main/images/256910531_654990085887242_5773870891744902807_n.jpg && export OF_MAINTAINER="ping2109" && export OF_MAINTAINER_AVATAR="*.png" && export ALLOW_MISSING_DEPENDENCIES=true
+    EXTRA_CMD: git clone https://gitlab.com/OrangeFox/misc/theme.git bootable/recovery/gui/theme && export OF_MAINTAINER="ping2109" && export ALLOW_MISSING_DEPENDENCIES=true
     OUTPUT: OrangeFox*.zip
     LUNCH: omni_j7xelte-eng
 
