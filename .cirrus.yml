@@ -64,12 +64,12 @@ task:
       - echo "Starting the Build..."
       - echo "============================"
       - cd ~/work
+      - source build/envsetup.sh
       - $EXTRA_CMD
       - export OF_MAINTAINER="ping2109"
       - export ALLOW_MISSING_DEPENDENCIES=true
-      - source build/envsetup.sh
       - lunch $LUNCH
-      - mka -j16 $TARGET
+      - mka $TARGET -j16
      
   Upload_script:
       - echo "============================"
