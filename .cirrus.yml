@@ -51,7 +51,7 @@ task:
       - mkdir -p ~/work
       - git clone https://gitlab.com/OrangeFox/sync.git
       - cd sync
-      - ./orangefox_sync.sh --branch 11.0 --path ~/work
+      - ./orangefox_sync.sh --branch 9.0 --path ~/work
       - cd -
       - git clone $DT_LINK $DT_PATH
       - echo "============================"
