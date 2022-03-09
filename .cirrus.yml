@@ -49,10 +49,9 @@ task:
       - echo "Syncing The Sources..."
       - echo "============================"
       - mkdir -p ~/work
-      - cd ~/work
       - git clone https://gitlab.com/OrangeFox/sync.git
       - cd sync
-      - ./orangefox_sync.sh --branch 11.0 --path ~/fox_11.0
+      - ./orangefox_sync.sh --branch 11.0 --path ~/work
       - cd -
       - git clone $DT_LINK $DT_PATH
       - echo "============================"
@@ -66,8 +65,8 @@ task:
       - echo "============================"
       - cd ~/work
       - $EXTRA_CMD
-      - git clone https://gitlab.com/OrangeFox/misc/theme.git
-      - bootable/recovery/gui/theme && export OF_MAINTAINER="ping2109"
+      - git clone https://gitlab.com/OrangeFox/misc/theme.git bootable/recovery/gui/theme
+      - export OF_MAINTAINER="ping2109"
       - export ALLOW_MISSING_DEPENDENCIES=true
       - . build/envsetup.sh
       - . $DT_PATH/vendorsetup.sh
