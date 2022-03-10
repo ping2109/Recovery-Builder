@@ -31,10 +31,10 @@ task:
        - sudo ln -sf /usr/bin/python2 /usr/bin/python
        - git config --global user.name "Sushrut1101"
        - git config --global user.email "guptasushrut@gmail.com"
-       - git clone https://github.com/akhilnarang/scripts.git ~/scripts
-       - cd ~/scripts
+       - git clone https://gitlab.com/OrangeFox/misc/scripts
+       - cd scripts
        - sudo bash setup/android_build_env.sh
-       - cd ~
+       - sudo bash setup/install_android_sdk.sh
   
   Neofetch_script:
        - neofetch
@@ -48,11 +48,11 @@ task:
       - echo "============================"
       - echo "Syncing The Sources..."
       - echo "============================"
-      - mkdir -p ~/work
+      - mkdir work
       - git clone https://gitlab.com/OrangeFox/sync.git
       - cd sync
-      - ./orangefox_sync.sh --branch 9.0 --path ~/work
-      - cd ~/work
+      - ./orangefox_sync.sh --branch 9.0 --path ../work
+      - cd ../work
       - git clone $DT_LINK $DT_PATH
       - echo "============================"
       - echo "Syncing Complete!"
@@ -63,7 +63,7 @@ task:
       - echo "============================"
       - echo "Starting the Build..."
       - echo "============================"
-      - cd ~/work
+      - cd work
       - . build/envsetup.sh
       - . $DT_PATH/vendorsetup.sh
       - $EXTRA_CMD
@@ -76,7 +76,7 @@ task:
       - echo "============================"
       - echo "Uploading the Build..."
       - echo "============================"
-      - cd ~/work
+      - cd work
       - cd out/target/product/"$DEVICE"
       - ls -lh
       - pwd
