@@ -13,10 +13,10 @@ task:
   name: "Setting Up, Syncing, Building and Uploading..."
   timeout_in: 240m  
   container:
-      image: ubuntu:20.04
+      image: ubuntu:20.04 java: 8
       cpu: 8
       memory: 32G
-      java: 8
+      
   
   Build-Env-Setup_script:
        - export DEBIAN_FRONTEND=noninteractive
