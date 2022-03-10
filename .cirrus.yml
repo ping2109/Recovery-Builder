@@ -1,5 +1,5 @@
 env:
-    MANIFEST: https://gitlab.com/OrangeFox/device/j7xelte.git -b fox_9.0
+    MANIFEST: https://github.com/ping2109/device_samsung_j7xelte-twrp.git
     DT_LINK: https://github.com/ping2109/device_xiaomi_spes-twrp.git -b working
     DEVICE: j7xelte
     OEM: samsung
@@ -66,7 +66,7 @@ task:
       - echo "Starting the Build..."
       - echo "============================"
       - cd ~/work
-      - . build/envsetup.sh
+      - source build/envsetup.sh
       - . $DT_PATH/vendorsetup.sh
       - $EXTRA_CMD
       - export OF_MAINTAINER="ping2109"
