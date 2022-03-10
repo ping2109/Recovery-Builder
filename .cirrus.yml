@@ -1,6 +1,6 @@
 env:
     MANIFEST: https://github.com/ping2109/device_samsung_j7xelte-twrp.git
-    DT_LINK: https://github.com/ping2109/device_xiaomi_spes-twrp.git -b working
+    DT_LINK: https://github.com/ping2109/device_samsung_j7xelte-twrp.git
     DEVICE: j7xelte
     OEM: samsung
     DT_PATH: device/$OEM/$DEVICE
