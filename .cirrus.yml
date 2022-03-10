@@ -13,7 +13,7 @@ task:
   name: "Setting Up, Syncing, Building and Uploading..."
   timeout_in: 240m  
   container:
-      image:  java:8
+      image: ubuntu:20.04
       cpu: 8
       memory: 32G
       
@@ -32,10 +32,6 @@ task:
        - sudo ln -sf /usr/bin/python2 /usr/bin/python
        - git config --global user.name "Sushrut1101"
        - git config --global user.email "guptasushrut@gmail.com"
-       - git clone https://gitlab.com/OrangeFox/misc/scripts
-       - cd scripts
-       - sudo bash setup/android_build_env.sh
-       - sudo bash setup/install_android_sdk.sh
   
   Neofetch_script:
        - neofetch
@@ -49,11 +45,11 @@ task:
       - echo "============================"
       - echo "Syncing The Sources..."
       - echo "============================"
-      - mkdir work
+      - mkdir -p ~/work
       - git clone https://gitlab.com/OrangeFox/sync.git
       - cd sync
-      - ./orangefox_sync.sh --branch 9.0 --path ../work
-      - cd ../work
+      - ./orangefox_sync.sh --branch 9.0 --path ~/work
+      - cd ~/work
       - git clone $DT_LINK $DT_PATH
       - echo "============================"
       - echo "Syncing Complete!"
@@ -64,12 +60,14 @@ task:
       - echo "============================"
       - echo "Starting the Build..."
       - echo "============================"
-      - cd work
+      - cd ~/work
       - . build/envsetup.sh
       - . $DT_PATH/vendorsetup.sh
       - $EXTRA_CMD
       - export OF_MAINTAINER="ping2109"
       - export ALLOW_MISSING_DEPENDENCIES=true
+      - export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
+      - export LC_ALL="C"
       - lunch $LUNCH
       - mka $TARGET -j16
      
