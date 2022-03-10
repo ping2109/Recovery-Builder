@@ -79,7 +79,7 @@ task:
       - echo "============================"
       - echo "Uploading the Build..."
       - echo "============================"
-      - cd work
+      - cd ~/work
       - cd out/target/product/"$DEVICE"
       - ls -lh
       - pwd
