@@ -16,6 +16,7 @@ task:
       image: ubuntu:20.04
       cpu: 8
       memory: 32G
+      java: 8
   
   Build-Env-Setup_script:
        - export DEBIAN_FRONTEND=noninteractive
