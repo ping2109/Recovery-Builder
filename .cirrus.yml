@@ -1,13 +1,13 @@
 env:
-    MANIFEST: https://github.com/ping2109/device_samsung_j7xelte-twrp.git
-    DT_LINK: https://github.com/ping2109/device_samsung_j7xelte-twrp.git
-    DEVICE: j7xelte
+    MANIFEST: https://github.com/ping2109/device_samsung_a6lte-twrp.git
+    DT_LINK: https://github.com/ping2109/device_samsung_a6lte-twrp.git
+    DEVICE: a6lte
     OEM: samsung
     DT_PATH: device/$OEM/$DEVICE
     TARGET: recoveryimage
     EXTRA_CMD: 
     OUTPUT: OrangeFox*.zip
-    LUNCH: omni_j7xelte-eng
+    LUNCH: omni_a6lte-eng
 
 task:
   name: "Setting Up, Syncing, Building and Uploading..."
