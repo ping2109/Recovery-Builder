@@ -1,13 +1,12 @@
 env:
-    MANIFEST: https://github.com/ping2109/device_samsung_j7xelte-twrp.git
-    DT_LINK: https://github.com/ping2109/device_samsung_j7xelte-twrp.git
-    DEVICE: j7xelte
+    DT_LINK: https://gitlab.com/OrangeFox/device/on7xelte
+    DEVICE: on7xelte
     OEM: samsung
     DT_PATH: device/$OEM/$DEVICE
     TARGET: recoveryimage
     EXTRA_CMD: 
     OUTPUT: OrangeFox*.zip
-    LUNCH: omni_j7xelte-eng
+    LUNCH: omni_on7xelte-eng
 
 task:
   name: "Setting Up, Syncing, Building and Uploading..."
@@ -63,6 +62,9 @@ task:
       - echo "Starting the Build..."
       - echo "============================"
       - cd ~/work
+      - export PRODUCT_NAME=omni_$DEVICE
+      - export TARGET_CRYPTFS_HW_PATH=false
+      - export TARGET_HW_DISK_ENCRYPTION=false
       - source build/envsetup.sh
       - . $DT_PATH/vendorsetup.sh
       - $EXTRA_CMD
