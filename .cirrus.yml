@@ -67,7 +67,7 @@ task:
       - . $DT_PATH/vendorsetup.sh
       - $EXTRA_CMD
       - export OF_MAINTAINER="ping2109"
-      - sed -i 's/TARGET_CRYPTFS_HW_PATH := device\/\qcom\/\common\/\cryptfs_hw/# TARGET_CRYPTFS_HW_PATH := device\/\qcom\/\common\/\cryptfs_hw\/\g' $DT_PATH/BoardConfig.mk
+      - sed -i 's/TARGET_CRYPTFS_HW_PATH := device/qcom/common/cryptfs_hw\# TARGET_CRYPTFS_HW_PATH := device/qcom/common/cryptfs_hw\g' $DT_PATH/BoardConfig.mk
       - sed -i 's/export TARGET_HW_DISK_ENCRYPTION=false/# export TARGET_HW_DISK_ENCRYPTION=false/g' $DT_PATH/BoardConfig.mk
       - export ALLOW_MISSING_DEPENDENCIES=true
       - export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
