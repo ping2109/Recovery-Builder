@@ -1,5 +1,5 @@
 env:
-    MANIFEST: https://github.com/PitchBlackRecoveryProject/manifest_pb.git -b android-11
+    MANIFEST: https://github.com/PitchBlackRecoveryProject/manifest_pb.git -b android-11.0
     OUTPUT: PBRP*.zip
     A3: a3y17lte
     J7X: j7xelte
