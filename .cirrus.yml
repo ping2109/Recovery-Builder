@@ -1,12 +1,13 @@
 env:
-    DT_LINK: https://gitlab.com/OrangeFox/device/on7xelte
-    DEVICE: on7xelte
-    OEM: samsung
-    DT_PATH: device/$OEM/$DEVICE
-    TARGET: recoveryimage
-    EXTRA_CMD: 
     OUTPUT: OrangeFox*.zip
-    LUNCH: omni_on7xelte-eng
+    A3: a3y17lte
+    J7X: j7xelte
+    J7V: j7velte
+    J5Y: j5y17lte
+    J7Y: j7y17lte
+    J6: j6lte
+    A6: a6lte
+    J7P: on7xelte
 
 task:
   name: "Setting Up, Syncing, Building and Uploading..."
@@ -50,41 +51,148 @@ task:
       - cd sync
       - ./orangefox_sync.sh --branch 9.0 --path ~/work
       - cd ~
-      - cd ~/work
-      - git clone $DT_LINK $DT_PATH
-      - sed -i 's/TARGET_CRYPTFS_HW_PATH/# TARGET_CRYPTFS_HW_PATH/g' $DT_PATH/BoardConfig.mk
-      - sed -i 's/TARGET_HW_DISK_ENCRYPTION=true/# TARGET_HW_DISK_ENCRYPTION=false/g' $DT_PATH/BoardConfig.mk
+      - mkdir -p ~/done
       - echo "============================"
       - echo "Syncing Complete!"
       - echo "============================"
   
   
-  Build_script:
+  BuildP-A3_script:
       - echo "============================"
       - echo "Starting the Build..."
       - echo "============================"
       - cd ~/work
-      - export PRODUCT_NAME=omni_$DEVICE
+      - make clean
+      - git clone https://github.com/ping2109/device_samsung_$A3-twrp.git device/samsung/$A3
       - source build/envsetup.sh
-      - . $DT_PATH/vendorsetup.sh
-      - $EXTRA_CMD
+      - . device/samsung/$A3/vendorsetup.sh
       - export OF_MAINTAINER="ping2109"
       - export ALLOW_MISSING_DEPENDENCIES=true
       - export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
       - export LC_ALL="C"
-      - lunch $LUNCH
-      - mka $TARGET -j16
+      - lunch omni_$A3-eng
+      - mka recoveryimage -j16
+      - cd out/target/product/$A3
+      - cp $OUTPUT ~/done
      
+  BuildP-J7X_script:
+      - echo "============================"
+      - echo "Starting the Build..."
+      - echo "============================"
+      - cd ~/work
+      - make clean
+      - git clone https://github.com/ping2109/device_samsung_$J7X-twrp.git device/samsung/$J7X
+      - source build/envsetup.sh
+      - . device/samsung/$J7X/vendorsetup.sh
+      - export OF_MAINTAINER="ping2109"
+      - export ALLOW_MISSING_DEPENDENCIES=true
+      - export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
+      - export LC_ALL="C"
+      - lunch omni_$J7X-eng
+      - mka recoveryimage -j16
+      - cd out/target/product/$J7X
+      - cp $OUTPUT ~/done
+      
+  BuildP-J7P_script:
+      - echo "============================"
+      - echo "Starting the Build..."
+      - echo "============================"
+      - cd ~/work
+      - make clean
+      - git clone https://github.com/ping2109/device_samsung_$J7P-twrp.git device/samsung/$J7P
+      - source build/envsetup.sh
+      - . device/samsung/$J7P/vendorsetup.sh
+      - export OF_MAINTAINER="ping2109"
+      - export ALLOW_MISSING_DEPENDENCIES=true
+      - export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
+      - export LC_ALL="C"
+      - lunch omni_$J7P-eng
+      - mka recoveryimage -j16
+      - cd out/target/product/$J7P
+      - cp $OUTPUT ~/done
+      
+  BuildP-J7Y_script:
+      - echo "============================"
+      - echo "Starting the Build..."
+      - echo "============================"
+      - cd ~/work
+      - make clean
+      - git clone https://github.com/ping2109/device_samsung_$J7Y-twrp.git device/samsung/$J7Y
+      - source build/envsetup.sh
+      - . device/samsung/$J7Y/vendorsetup.sh
+      - export OF_MAINTAINER="ping2109"
+      - export ALLOW_MISSING_DEPENDENCIES=true
+      - export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
+      - export LC_ALL="C"
+      - lunch omni_$J7Y-eng
+      - mka recoveryimage -j16
+      - cd out/target/product/$J7Y
+      - cp $OUTPUT ~/done
+      
+  BuildP-J5Y_script:
+      - echo "============================"
+      - echo "Starting the Build..."
+      - echo "============================"
+      - cd ~/work
+      - make clean
+      - git clone https://github.com/ping2109/device_samsung_$J5Y-twrp.git device/samsung/$J5Y
+      - source build/envsetup.sh
+      - . device/samsung/$J5Y/vendorsetup.sh
+      - export OF_MAINTAINER="ping2109"
+      - export ALLOW_MISSING_DEPENDENCIES=true
+      - export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
+      - export LC_ALL="C"
+      - lunch omni_$J5Y-eng
+      - mka recoveryimage -j16
+      - cd out/target/product/$J5Y
+      - cp $OUTPUT ~/done
+      
+  BuildP-J6_script:
+      - echo "============================"
+      - echo "Starting the Build..."
+      - echo "============================"
+      - cd ~/work
+      - make clean
+      - git clone https://github.com/ping2109/device_samsung_$J6-twrp.git device/samsung/$J6
+      - source build/envsetup.sh
+      - . device/samsung/$J6/vendorsetup.sh
+      - export OF_MAINTAINER="ping2109"
+      - export ALLOW_MISSING_DEPENDENCIES=true
+      - export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
+      - export LC_ALL="C"
+      - lunch omni_$J6-eng
+      - mka recoveryimage -j16
+      - cd out/target/product/$J6
+      - cp $OUTPUT ~/done
+      
+  BuildP-A6_script:
+      - echo "============================"
+      - echo "Starting the Build..."
+      - echo "============================"
+      - cd ~/work
+      - make clean
+      - git clone https://github.com/ping2109/device_samsung_$A6-twrp.git device/samsung/$A6
+      - source build/envsetup.sh
+      - . device/samsung/$A6/vendorsetup.sh
+      - export OF_MAINTAINER="ping2109"
+      - export ALLOW_MISSING_DEPENDENCIES=true
+      - export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
+      - export LC_ALL="C"
+      - lunch omni_$A6-eng
+      - mka recoveryimage -j16
+      - cd out/target/product/$A6
+      - cp $OUTPUT ~/done
+           
   Upload_script:
       - echo "============================"
       - echo "Uploading the Build..."
       - echo "============================"
-      - cd ~/work
-      - cd out/target/product/"$DEVICE"
+      - cd ~/done
+      - curl -sL https://git.io/file-transfer | sh
       - ls -lh
       - pwd
       - chmod 777 *
-      - curl --upload-file $(echo $OUTPUT) https://transfer.sh | tee link.txt && echo " "
+      - ./transfer wet * | tee link.txt && echo " "
       - echo " "
       - echo "============================"
       - echo "Build Uploaded!"
@@ -92,5 +200,3 @@ task:
       - echo "----------------------------"
       - cat link.txt && echo " "
       - echo "============================"
-        
-
