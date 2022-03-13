@@ -66,7 +66,7 @@ task:
       - echo "Starting the Build..."
       - echo "============================"
       - cd ~/work
-      - make clean
+      - rm -rf device/samsung/*
       - git clone https://github.com/ping2109/device_samsung_$A3-twrp.git device/samsung/$A3
       - source build/envsetup.sh
       - . device/samsung/$A3/vendorsetup.sh
@@ -83,7 +83,7 @@ task:
       - echo "Starting the Build..."
       - echo "============================"
       - cd ~/work
-      - make clean
+      - rm -rf device/samsung/*
       - git clone https://github.com/ping2109/device_samsung_$J7X-twrp.git device/samsung/$J7X
       - source build/envsetup.sh
       - . device/samsung/$J7X/vendorsetup.sh
@@ -100,7 +100,7 @@ task:
       - echo "Starting the Build..."
       - echo "============================"
       - cd ~/work
-      - make clean
+      - rm -rf device/samsung/*
       - git clone https://github.com/ping2109/device_samsung_$J7P-twrp.git device/samsung/$J7P
       - source build/envsetup.sh
       - . device/samsung/$J7P/vendorsetup.sh
@@ -117,7 +117,7 @@ task:
       - echo "Starting the Build..."
       - echo "============================"
       - cd ~/work
-      - make clean
+      - rm -rf device/samsung/*
       - git clone https://github.com/ping2109/device_samsung_$J7Y-twrp.git device/samsung/$J7Y
       - source build/envsetup.sh
       - . device/samsung/$J7Y/vendorsetup.sh
@@ -134,7 +134,7 @@ task:
       - echo "Starting the Build..."
       - echo "============================"
       - cd ~/work
-      - make clean
+      - rm -rf device/samsung/*
       - git clone https://github.com/ping2109/device_samsung_$J5Y-twrp.git device/samsung/$J5Y
       - source build/envsetup.sh
       - . device/samsung/$J5Y/vendorsetup.sh
@@ -151,7 +151,7 @@ task:
       - echo "Starting the Build..."
       - echo "============================"
       - cd ~/work
-      - make clean
+      - rm -rf device/samsung/*
       - git clone https://github.com/ping2109/device_samsung_$J6-twrp.git device/samsung/$J6
       - source build/envsetup.sh
       - . device/samsung/$J6/vendorsetup.sh
@@ -168,7 +168,7 @@ task:
       - echo "Starting the Build..."
       - echo "============================"
       - cd ~/work
-      - make clean
+      - rm -rf device/samsung/*
       - git clone https://github.com/ping2109/device_samsung_$A6-twrp.git device/samsung/$A6
       - source build/envsetup.sh
       - . device/samsung/$A6/vendorsetup.sh
