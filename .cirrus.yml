@@ -1,5 +1,6 @@
 env:
-    OUTPUT: OrangeFox*.zip
+    MANIFEST: https://github.com/PitchBlackRecoveryProject/manifest_pb.git -b android-11
+    OUTPUT: PBRP*.zip
     A3: a3y17lte
     J7X: j7xelte
     J7V: j7velte
@@ -41,15 +42,16 @@ task:
       - df -h
       - lsblk
       - ls -l -a -h
-  
+
+
   Sync_script:
       - echo "============================"
       - echo "Syncing The Sources..."
       - echo "============================"
       - mkdir -p ~/work
-      - git clone https://gitlab.com/OrangeFox/sync.git
-      - cd sync
-      - ./orangefox_sync.sh --branch 9.0 --path ~/work
+      - cd ~/work
+      - repo init --depth=1 -u $MANIFEST 
+      - repo sync -j16 --force-sync --no-tags --no-clone-bundle
       - cd ~
       - mkdir -p ~/done
       - echo "============================"
@@ -66,7 +68,6 @@ task:
       - git clone https://github.com/ping2109/device_samsung_$A3-twrp.git device/samsung/$A3
       - source build/envsetup.sh
       - . device/samsung/$A3/vendorsetup.sh
-      - export OF_MAINTAINER="ping2109"
       - export ALLOW_MISSING_DEPENDENCIES=true
       - export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
       - export LC_ALL="C"
@@ -84,7 +85,6 @@ task:
       - git clone https://github.com/ping2109/device_samsung_$J7X-twrp.git device/samsung/$J7X
       - source build/envsetup.sh
       - . device/samsung/$J7X/vendorsetup.sh
-      - export OF_MAINTAINER="ping2109"
       - export ALLOW_MISSING_DEPENDENCIES=true
       - export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
       - export LC_ALL="C"
@@ -102,7 +102,6 @@ task:
       - git clone https://github.com/ping2109/device_samsung_$J7P-twrp.git device/samsung/$J7P
       - source build/envsetup.sh
       - . device/samsung/$J7P/vendorsetup.sh
-      - export OF_MAINTAINER="ping2109"
       - export ALLOW_MISSING_DEPENDENCIES=true
       - export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
       - export LC_ALL="C"
@@ -120,7 +119,6 @@ task:
       - git clone https://github.com/ping2109/device_samsung_$J7Y-twrp.git device/samsung/$J7Y
       - source build/envsetup.sh
       - . device/samsung/$J7Y/vendorsetup.sh
-      - export OF_MAINTAINER="ping2109"
       - export ALLOW_MISSING_DEPENDENCIES=true
       - export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
       - export LC_ALL="C"
@@ -138,7 +136,6 @@ task:
       - git clone https://github.com/ping2109/device_samsung_$J5Y-twrp.git device/samsung/$J5Y
       - source build/envsetup.sh
       - . device/samsung/$J5Y/vendorsetup.sh
-      - export OF_MAINTAINER="ping2109"
       - export ALLOW_MISSING_DEPENDENCIES=true
       - export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
       - export LC_ALL="C"
@@ -156,7 +153,6 @@ task:
       - git clone https://github.com/ping2109/device_samsung_$J6-twrp.git device/samsung/$J6
       - source build/envsetup.sh
       - . device/samsung/$J6/vendorsetup.sh
-      - export OF_MAINTAINER="ping2109"
       - export ALLOW_MISSING_DEPENDENCIES=true
       - export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
       - export LC_ALL="C"
@@ -174,7 +170,6 @@ task:
       - git clone https://github.com/ping2109/device_samsung_$A6-twrp.git device/samsung/$A6
       - source build/envsetup.sh
       - . device/samsung/$A6/vendorsetup.sh
-      - export OF_MAINTAINER="ping2109"
       - export ALLOW_MISSING_DEPENDENCIES=true
       - export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
       - export LC_ALL="C"
