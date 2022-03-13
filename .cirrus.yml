@@ -1,12 +1,12 @@
 env:
-    MANIFEST: https://github.com/ping2109/device_samsung_j7xelte-twrp.git
+    MANIFEST: https://github.com/PitchBlackRecoveryProject/manifest_pb.git -b android-11.0
     DT_LINK: https://github.com/ping2109/device_samsung_j7xelte-twrp.git
     DEVICE: j7xelte
     OEM: samsung
     DT_PATH: device/$OEM/$DEVICE
     TARGET: recoveryimage
     EXTRA_CMD: 
-    OUTPUT: OrangeFox*.zip
+    OUTPUT: PRBP*.zip
     LUNCH: omni_j7xelte-eng
 
 task:
@@ -41,15 +41,16 @@ task:
       - df -h
       - lsblk
       - ls -l -a -h
-  
+
+
   Sync_script:
       - echo "============================"
       - echo "Syncing The Sources..."
       - echo "============================"
       - mkdir -p ~/work
-      - git clone https://gitlab.com/OrangeFox/sync.git
-      - cd sync
-      - ./orangefox_sync.sh --branch 9.0 --path ~/work
+      - cd ~/work
+      - repo init --depth=1 -u $MANIFEST 
+      - repo sync -j16 --force-sync --no-tags --no-clone-bundle
       - cd ~
       - cd ~/work
       - git clone $DT_LINK $DT_PATH
@@ -64,9 +65,8 @@ task:
       - echo "============================"
       - cd ~/work
       - source build/envsetup.sh
-      - . $DT_PATH/vendorsetup.sh
+      - # . $DT_PATH/vendorsetup.sh
       - $EXTRA_CMD
-      - export OF_MAINTAINER="ping2109"
       - export ALLOW_MISSING_DEPENDENCIES=true
       - export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
       - export LC_ALL="C"
