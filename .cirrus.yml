@@ -1,6 +1,6 @@
 env:
     MANIFEST: https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11
-    DT_LINK: https://github.com/ping2109/device_xiaomi_spes-twrp.git -b working
+    DT_LINK: https://github.com/ping2109/device_xiaomi_spes-twrp2
     DEVICE: spes
     OEM: xiaomi
     DT_PATH: device/$OEM/$DEVICE
@@ -29,8 +29,10 @@ task:
        - sudo apt update -y && sudo apt install git aria2 curl wget rsync zip unzip lzma cpio ccache neofetch -y
        - sudo apt install python2 -y
        - sudo ln -sf /usr/bin/python2 /usr/bin/python
-       - git config --global user.name "Sushrut1101"
-       - git config --global user.email "guptasushrut@gmail.com"
+       - git config --global user.name $GH_NAME
+       - git config --global user.email $GH_MAIL
+       - git config --global credential.helper store
+       - echo "https://$GH_NAME:$GH_TOKEN@github.com" > ~/.git-credentials
        - git clone https://github.com/akhilnarang/scripts.git ~/scripts
        - cd ~/scripts
        - sudo bash setup/android_build_env.sh
@@ -65,7 +67,7 @@ task:
       - cd ~/work
       - $EXTRA_CMD
       - . build/envsetup.sh
-      - . $DT_PATH/vendorsetup.sh
+      - # . $DT_PATH/vendorsetup.sh
       - lunch $LUNCH
       - mka -j16 $TARGET
      
