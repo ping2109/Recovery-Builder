@@ -8,7 +8,10 @@ env:
     EXTRA_CMD: # git clone https://github.com/OrangeFoxRecovery/Avatar.git misc
     OUTPUT: recovery.img
     LUNCH: twrp_spes-eng
-
+    GH_NAME: ${{ secrets.GH_NAME }}
+    GH_MAIL: ${{ secrets.GH_MAIL }}
+    GH_TOKEN: ${{ secrets.GH_TOKEN }}
+    
 task:
   name: "Setting Up, Syncing, Building and Uploading..."
   timeout_in: 240m  
