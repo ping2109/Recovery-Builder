@@ -72,6 +72,7 @@ task:
       - . build/envsetup.sh
       - # . $DT_PATH/vendorsetup.sh
       - lunch $LUNCH
+      - export ALLOW_MISSING_DEPENDENCIES=true
       - mka -j16 $TARGET
      
   Upload_script:
