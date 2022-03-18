@@ -1,6 +1,6 @@
 env:
     MANIFEST: https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11
-    DT_LINK: https://github.com/ping2109/builbot
+    DT_LINK: https://github.com/ping2109/device_xiaomi_spes-twrp -b working
     DEVICE: spes
     OEM: xiaomi
     DT_PATH: device/$OEM/$DEVICE
@@ -70,7 +70,7 @@ task:
       - cd ~/work
       - $EXTRA_CMD
       - . build/envsetup.sh
-      - # . $DT_PATH/vendorsetup.sh
+      - . $DT_PATH/vendorsetup.sh
       - lunch $LUNCH
       - export ALLOW_MISSING_DEPENDENCIES=true
       - mka -j16 $TARGET
