@@ -5,7 +5,7 @@ env:
     DEVICE: spes
     OEM: xiaomi
     DT_PATH: device/$OEM/$DEVICE
-    TARGET: recoveryimage
+    TARGET: bootimage
     EXTRA_CMD: # git clone https://github.com/OrangeFoxRecovery/Avatar.git misc
     OUTPUT: recovery.img
     LUNCH: lineage_spes-eng
