@@ -1,16 +1,14 @@
 env:
+    GH: "ENCRYPTED[749681f4094921ff62bc080769d13789d69d254259a14592111dfcd8f92bfb66add79204d08a1bfbd50cf729eabd1020]"
     MANIFEST: https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11
-    DT_LINK: https://github.com/ping2109/device_xiaomi_spes-twrp -b working
+    DT_LINK: https://$GH@github.com/boedhack/device_xiaomi_spes
     DEVICE: spes
     OEM: xiaomi
     DT_PATH: device/$OEM/$DEVICE
     TARGET: recoveryimage
     EXTRA_CMD: # git clone https://github.com/OrangeFoxRecovery/Avatar.git misc
     OUTPUT: recovery.img
-    LUNCH: twrp_spes-eng
-    GH_NAME: ${{ secrets.GH_NAME }}
-    GH_MAIL: ${{ secrets.GH_MAIL }}
-    GH_TOKEN: ${{ secrets.GH_TOKEN }}
+    LUNCH: lineage_spes-eng
     
 task:
   name: "Setting Up, Syncing, Building and Uploading..."
@@ -32,10 +30,6 @@ task:
        - sudo apt update -y && sudo apt install git aria2 curl wget rsync zip unzip lzma cpio ccache neofetch -y
        - sudo apt install python2 -y
        - sudo ln -sf /usr/bin/python2 /usr/bin/python
-       - git config --global user.name $GH_NAME
-       - git config --global user.email $GH_MAIL
-       - git config --global credential.helper store
-       - echo "https://$GH_NAME:$GH_TOKEN@github.com" > ~/.git-credentials
        - git clone https://github.com/akhilnarang/scripts.git ~/scripts
        - cd ~/scripts
        - sudo bash setup/android_build_env.sh
@@ -70,7 +64,7 @@ task:
       - cd ~/work
       - $EXTRA_CMD
       - . build/envsetup.sh
-      - . $DT_PATH/vendorsetup.sh
+      - # . $DT_PATH/vendorsetup.sh
       - lunch $LUNCH
       - export ALLOW_MISSING_DEPENDENCIES=true
       - mka -j16 $TARGET
