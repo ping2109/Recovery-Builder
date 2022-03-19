@@ -8,7 +8,7 @@ env:
     TARGET: recoveryimage
     EXTRA_CMD: # git clone https://github.com/OrangeFoxRecovery/Avatar.git misc
     OUTPUT: recovery.img
-    LUNCH: lineage_spes-eng
+    LUNCH: twrp_spes-eng
     
 task:
   name: "Setting Up, Syncing, Building and Uploading..."
