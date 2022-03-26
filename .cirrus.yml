@@ -1,6 +1,7 @@
 env:
+    GH: "ENCRYPTED[749681f4094921ff62bc080769d13789d69d254259a14592111dfcd8f92bfb66add79204d08a1bfbd50cf729eabd1020]"
     MANIFEST: https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11
-    DT_LINK: https://github.com/ping2109/device_xiaomi_spes-twrp -b working
+    DT_LINK: https://$GH@github.com/ping2109/device_xiaomi_spes-twrp -b working
     DEVICE: spes
     OEM: xiaomi
     DT_PATH: device/$OEM/$DEVICE
@@ -10,7 +11,6 @@ env:
     LUNCH: twrp_spes-eng
     GH_NAME: ${{ secrets.GH_NAME }}
     GH_MAIL: ${{ secrets.GH_MAIL }}
-    GH_TOKEN: ${{ secrets.GH_TOKEN }}
     
 task:
   name: "Setting Up, Syncing, Building and Uploading..."
@@ -35,7 +35,6 @@ task:
        - git config --global user.name $GH_NAME
        - git config --global user.email $GH_MAIL
        - git config --global credential.helper store
-       - echo "https://$GH_NAME:$GH_TOKEN@github.com" > ~/.git-credentials
        - git clone https://github.com/akhilnarang/scripts.git ~/scripts
        - cd ~/scripts
        - sudo bash setup/android_build_env.sh
@@ -58,6 +57,7 @@ task:
       - repo init --depth=1 -u $MANIFEST 
       - repo sync -j16 --force-sync --no-tags --no-clone-bundle
       - git clone $DT_LINK $DT_PATH
+      - git clone https://github.com/minimal-manifest-twrp/platform_external_busybox external/busybox
       - echo "============================"
       - echo "Syncing Complete!"
       - echo "============================"
