@@ -1,13 +1,12 @@
 env:
     GH: "ENCRYPTED[749681f4094921ff62bc080769d13789d69d254259a14592111dfcd8f92bfb66add79204d08a1bfbd50cf729eabd1020]"
-    MANIFEST: https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11
-    DT_LINK: https://$GH@github.com/ping2109/device_xiaomi_spes-twrp -b working
+    DT_LINK: https://github.com/OrangeFoxRecovery/device_xiaomi_spes
     DEVICE: spes
     OEM: xiaomi
     DT_PATH: device/$OEM/$DEVICE
-    TARGET: recoveryimage
+    TARGET: bootimage
     EXTRA_CMD: # git clone https://github.com/OrangeFoxRecovery/Avatar.git misc
-    OUTPUT: recovery.img
+    OUTPUT: OrangeFox*.zip
     LUNCH: twrp_spes-eng
     GH_NAME: ${{ secrets.GH_NAME }}
     GH_MAIL: ${{ secrets.GH_MAIL }}
@@ -53,11 +52,12 @@ task:
       - echo "Syncing The Sources..."
       - echo "============================"
       - mkdir -p ~/work
+      - git clone https://gitlab.com/OrangeFox/sync.git
+      - cd sync
+      - ./orangefox_sync.sh --branch 11.0 --path ~/work
+      - cd ~
       - cd ~/work
-      - repo init --depth=1 -u $MANIFEST 
-      - repo sync -j16 --force-sync --no-tags --no-clone-bundle
       - git clone $DT_LINK $DT_PATH
-      - git clone https://github.com/minimal-manifest-twrp/platform_external_busybox external/busybox
       - echo "============================"
       - echo "Syncing Complete!"
       - echo "============================"
@@ -68,12 +68,14 @@ task:
       - echo "Starting the Build..."
       - echo "============================"
       - cd ~/work
-      - $EXTRA_CMD
-      - . build/envsetup.sh
+      - source build/envsetup.sh
       - . $DT_PATH/vendorsetup.sh
-      - lunch $LUNCH
+      - $EXTRA_CMD
+      - export OF_MAINTAINER="AnhNotAnh (ping2109)"
       - export ALLOW_MISSING_DEPENDENCIES=true
-      - mka -j16 $TARGET
+      - export LC_ALL="C"
+      - lunch $LUNCH
+      - mka $TARGET -j16
      
   Upload_script:
       - echo "============================"
