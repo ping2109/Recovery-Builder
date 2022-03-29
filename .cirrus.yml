@@ -5,7 +5,6 @@ env:
     OEM: xiaomi
     DT_PATH: device/$OEM/$DEVICE
     TARGET: bootimage
-    EXTRA_CMD: # git clone https://github.com/OrangeFoxRecovery/Avatar.git misc
     OUTPUT: OrangeFox*.zip
     LUNCH: twrp_spes-eng
     GH_NAME: ${{ secrets.GH_NAME }}
@@ -70,7 +69,6 @@ task:
       - cd ~/work
       - source build/envsetup.sh
       - . $DT_PATH/vendorsetup.sh
-      - $EXTRA_CMD
       - export OF_MAINTAINER="AnhNotAnh (ping2109)"
       - export ALLOW_MISSING_DEPENDENCIES=true
       - export LC_ALL="C"
