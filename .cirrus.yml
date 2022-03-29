@@ -68,7 +68,7 @@ task:
       - echo "============================"
       - cd ~/work
       - source build/envsetup.sh
-      - . $DT_PATH/vendorsetup.sh
+      - # . $DT_PATH/vendorsetup.sh
       - export OF_MAINTAINER="AnhNotAnh (ping2109)"
       - export ALLOW_MISSING_DEPENDENCIES=true
       - export LC_ALL="C"
