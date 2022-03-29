@@ -1,11 +1,11 @@
 env:
     GH: "ENCRYPTED[749681f4094921ff62bc080769d13789d69d254259a14592111dfcd8f92bfb66add79204d08a1bfbd50cf729eabd1020]"
     MANIFEST: https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11
-    DT_LINK: https://$GH@github.com/ping2109/device_xiaomi_spes-twrp -b working
+    DT_LINK: https://github.com/OrangeFoxRecovery/device_xiaomi_spes
     DEVICE: spes
     OEM: xiaomi
     DT_PATH: device/$OEM/$DEVICE
-    TARGET: recoveryimage
+    TARGET: bootimage
     EXTRA_CMD: # git clone https://github.com/OrangeFoxRecovery/Avatar.git misc
     OUTPUT: recovery.img
     LUNCH: twrp_spes-eng
