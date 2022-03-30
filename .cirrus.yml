@@ -57,6 +57,7 @@ task:
       - cd ~
       - cd ~/work
       - git clone $DT_LINK $DT_PATH
+      - git clone https://github.com/boedhack99/kernel_xiaomi_spes kernel/xiaomi/spes
       - echo "============================"
       - echo "Syncing Complete!"
       - echo "============================"
