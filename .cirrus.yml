@@ -57,6 +57,7 @@ task:
       - repo init --depth=1 -u $MANIFEST 
       - repo sync -j16 --force-sync --no-tags --no-clone-bundle
       - git clone $DT_LINK $DT_PATH
+      - git clone https://github.com/boedhack99/kernel_xiaomi_spes kernel/xiaomi/spes
       - git clone https://github.com/minimal-manifest-twrp/platform_external_busybox external/busybox
       - echo "============================"
       - echo "Syncing Complete!"
