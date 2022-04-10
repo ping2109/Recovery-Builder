@@ -1,6 +1,6 @@
 env:
     GH: "ENCRYPTED[749681f4094921ff62bc080769d13789d69d254259a14592111dfcd8f92bfb66add79204d08a1bfbd50cf729eabd1020]"
-    DT_LINK: https://github.com/OrangeFoxRecovery/device_xiaomi_spes
+    DT_LINK: https://github.com/boedhack99/device_xiaomi_spes-TWRP
     DEVICE: spes
     OEM: xiaomi
     DT_PATH: device/$OEM/$DEVICE
@@ -57,7 +57,6 @@ task:
       - cd ~
       - cd ~/work
       - git clone $DT_LINK $DT_PATH
-      - git clone https://github.com/boedhack99/kernel_xiaomi_spes kernel/xiaomi/spes
       - echo "============================"
       - echo "Syncing Complete!"
       - echo "============================"
