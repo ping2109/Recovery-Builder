@@ -1,7 +1,7 @@
 env:
     GH: "ENCRYPTED[749681f4094921ff62bc080769d13789d69d254259a14592111dfcd8f92bfb66add79204d08a1bfbd50cf729eabd1020]"
     MANIFEST: https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11
-    DT_LINK: https://github.com/OrangeFoxRecovery/device_xiaomi_spes
+    DT_LINK: https://github.com/ping2109/device_xiaomi_spes-TWRP-new
     DEVICE: spes
     OEM: xiaomi
     DT_PATH: device/$OEM/$DEVICE
@@ -55,9 +55,8 @@ task:
       - mkdir -p ~/work
       - cd ~/work
       - repo init --depth=1 -u $MANIFEST 
-      - repo sync -j16 --force-sync --no-tags --no-clone-bundle
+      - repo sync -j8 --force-sync --no-tags --no-clone-bundle
       - git clone $DT_LINK $DT_PATH
-      - git clone https://github.com/boedhack99/kernel_xiaomi_spes kernel/xiaomi/spes
       - git clone https://github.com/minimal-manifest-twrp/platform_external_busybox external/busybox
       - echo "============================"
       - echo "Syncing Complete!"
@@ -71,10 +70,8 @@ task:
       - cd ~/work
       - $EXTRA_CMD
       - . build/envsetup.sh
-      - . $DT_PATH/vendorsetup.sh
       - lunch $LUNCH
-      - export ALLOW_MISSING_DEPENDENCIES=true
-      - mka -j16 $TARGET
+      - mka -j8 $TARGET
      
   Upload_script:
       - echo "============================"
