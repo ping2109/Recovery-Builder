@@ -1,13 +1,13 @@
 env:
-    MANIFEST: https://github.com/ping2109/device_samsung_j7xelte-twrp.git
-    DT_LINK: https://github.com/ping2109/device_samsung_j7xelte-twrp.git
-    DEVICE: j7xelte
-    OEM: samsung
+    MANIFEST: https://github.com/mi-msm8937/twrp_device_xiaomi_mi8937-new.git
+    DT_LINK: https://github.com/mi-msm8937/twrp_device_xiaomi_mi8937-new.git
+    DEVICE: mi8937
+    OEM: xiaomi
     DT_PATH: device/$OEM/$DEVICE
     TARGET: recoveryimage
     EXTRA_CMD: 
     OUTPUT: OrangeFox*.zip
-    LUNCH: omni_j7xelte-eng
+    LUNCH: omni_mi8937-eng
 
 task:
   name: "Setting Up, Syncing, Building and Uploading..."
@@ -21,7 +21,7 @@ task:
        - apt install sudo
        - df -h
        - DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata
-       - ln -sf /usr/share/zoneinfo/Asia/HoChiMinh /etc/localtime
+       - ln -sf /usr/share/zoneinfo/Asia/Ho_Chi_Minh /etc/localtime
        - apt-get install -y tzdata
        - dpkg-reconfigure --frontend noninteractive tzdata
        - sudo apt update -y && sudo apt install git aria2 curl wget rsync zip unzip lzma cpio ccache neofetch -y
@@ -49,7 +49,7 @@ task:
       - mkdir -p ~/work
       - git clone https://gitlab.com/OrangeFox/sync.git
       - cd sync
-      - ./orangefox_sync.sh --branch 9.0 --path ~/work
+      - ./orangefox_sync.sh --branch 11.0 --path ~/work
       - cd ~
       - cd ~/work
       - git clone $DT_LINK $DT_PATH
@@ -66,9 +66,9 @@ task:
       - source build/envsetup.sh
       - . $DT_PATH/vendorsetup.sh
       - $EXTRA_CMD
-      - export OF_MAINTAINER="ping2109"
+      - export OF_MAINTAINER="Anh Vinh (ping2109)"
       - export ALLOW_MISSING_DEPENDENCIES=true
-      - export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
+      - # export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
       - export LC_ALL="C"
       - lunch $LUNCH
       - mka $TARGET -j16
