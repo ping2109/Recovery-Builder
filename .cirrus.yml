@@ -5,7 +5,6 @@ env:
     OEM: xiaomi
     DT_PATH: device/$OEM/$DEVICE
     TARGET: recoveryimage
-    EXTRA_CMD: 
     OUTPUT: OrangeFox*.zip
     LUNCH: omni_mi8937-eng
 
@@ -50,9 +49,7 @@ task:
       - git clone https://gitlab.com/OrangeFox/sync.git
       - cd sync
       - ./orangefox_sync.sh --branch 11.0 --path ~/work
-      - cd ~
-      - cd ~/work
-      - git clone $DT_LINK $DT_PATH
+      - git clone $DT_LINK ~/work/$DT_PATH
       - echo "============================"
       - echo "Syncing Complete!"
       - echo "============================"
@@ -64,14 +61,15 @@ task:
       - echo "============================"
       - cd ~/work
       - source build/envsetup.sh
-      - . $DT_PATH/vendorsetup.sh
-      - $EXTRA_CMD
+      - export OF_ALLOW_DISABLE_NAVBAR=1
+      - export OF_NO_TREBLE_COMPATIBILITY_CHECK=1
+      - export OF_USE_TWRP_SAR_DETECT=1
       - export OF_MAINTAINER="Anh Vinh (ping2109)"
       - export ALLOW_MISSING_DEPENDENCIES=true
-      - # export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
+      - export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
       - export LC_ALL="C"
       - lunch $LUNCH
-      - mka $TARGET -j16
+      - mka $TARGET
      
   Upload_script:
       - echo "============================"
