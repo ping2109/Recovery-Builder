@@ -67,7 +67,7 @@ task:
       - echo "Starting the Build..."
       - echo "============================"
       - cd ~/work
-      - source build/envsetup.sh
+      - . build/envsetup.sh
       - # . $DT_PATH/vendorsetup.sh
       - export OF_MAINTAINER="ping2109"
       - export ALLOW_MISSING_DEPENDENCIES=true
