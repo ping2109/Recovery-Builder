@@ -4,7 +4,7 @@ env:
     DEVICE: spes
     OEM: xiaomi
     DT_PATH: device/$OEM/$DEVICE
-    TARGET: bootimage
+    TARGET: recoveryimage
     OUTPUT: OrangeFox*.zip
     LUNCH: twrp_spes-eng
     GH_NAME: ${{ secrets.GH_NAME }}
@@ -15,6 +15,8 @@ task:
   timeout_in: 480m
   container:
       image: ubuntu:20.04
+      cpu: 8
+      memory: 32G
       
   Build-Env-Setup_script:
        - export DEBIAN_FRONTEND=noninteractive
@@ -67,7 +69,7 @@ task:
       - cd ~/work
       - source build/envsetup.sh
       - # . $DT_PATH/vendorsetup.sh
-      - export OF_MAINTAINER="AnhNotAnh"
+      - export OF_MAINTAINER="ping2109"
       - export ALLOW_MISSING_DEPENDENCIES=true
       - export LC_ALL="C"
       - lunch $LUNCH
