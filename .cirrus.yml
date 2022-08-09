@@ -1,13 +1,13 @@
 env:
-    MANIFEST: https://github.com/ping2109/device_samsung_j7xelte-twrp.git
-    DT_LINK: https://github.com/ping2109/device_samsung_j7xelte-twrp.git
-    DEVICE: j7xelte
+    MANIFEST: https://github.com/TenSeventy7/android_device_samsung_a50dd.git
+    DT_LINK: https://github.com/TenSeventy7/android_device_samsung_a50dd.git
+    DEVICE: a50dd
     OEM: samsung
     DT_PATH: device/$OEM/$DEVICE
     TARGET: recoveryimage
     EXTRA_CMD: 
     OUTPUT: OrangeFox*.zip
-    LUNCH: omni_j7xelte-eng
+    LUNCH: omni_a50dd-eng
 
 task:
   name: "Setting Up, Syncing, Building and Uploading..."
@@ -62,16 +62,11 @@ task:
       - echo "============================"
       - echo "Starting the Build..."
       - echo "============================"
-      - cd ~/work
-      - . build/envsetup.sh
-      - . $DT_PATH/vendorsetup.sh
-      - $EXTRA_CMD
-      - export OF_MAINTAINER="ping2109"
-      - export ALLOW_MISSING_DEPENDENCIES=true
-      - export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
-      - export LC_ALL="C"
-      - lunch $LUNCH
-      - mka $TARGET -j16
+      - cd ~/work/$DT_PATH
+      - sed -i 's/Velosh/ping2109/g' build_ofox.sh
+      - sed -i 's/export FOX_VERSION="R11.0"/# export FOX_VERSION="R11.0"/g' build_ofox.sh
+      - sed -i 's/export OF_FLASHLIGHT_ENABLE="0"/export OF_FLASHLIGHT_ENABLE="1"/g' build_ofox.sh
+      - . build_ofox.sh
      
   Upload_script:
       - echo "============================"
