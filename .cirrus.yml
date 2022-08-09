@@ -62,11 +62,11 @@ task:
       - echo "============================"
       - echo "Starting the Build..."
       - echo "============================"
-      - cd ~/work/$DT_PATH
-      - sed -i 's/Velosh/ping2109/g' build_ofox.sh
-      - sed -i 's/export FOX_VERSION="R11.0"/# export FOX_VERSION="R11.0"/g' build_ofox.sh
-      - sed -i 's/export OF_FLASHLIGHT_ENABLE="0"/export OF_FLASHLIGHT_ENABLE="1"/g' build_ofox.sh
-      - . build_ofox.sh
+      - cd ~/work
+      - sed -i 's/Velosh/ping2109/g' $DT_PATH/build_ofox.sh
+      - sed -i 's/export FOX_VERSION="R11.0"/# export FOX_VERSION="R11.0"/g' $DT_PATH/build_ofox.sh
+      - sed -i 's/export OF_FLASHLIGHT_ENABLE="0"/export OF_FLASHLIGHT_ENABLE="1"/g' $DT_PATH/build_ofox.sh
+      - . $DT_PATH/build_ofox.sh
      
   Upload_script:
       - echo "============================"
