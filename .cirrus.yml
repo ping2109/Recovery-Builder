@@ -1,14 +1,14 @@
 env:
-    GH: "ENCRYPTED[749681f4094921ff62bc080769d13789d69d254259a14592111dfcd8f92bfb66add79204d08a1bfbd50cf729eabd1020]"
+    GH: "https://github.com/ping2109/android_device_samsung_gto"
     MANIFEST: https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11
-    DT_LINK: https://github.com/ping2109/device_xiaomi_spes-TWRP-new
-    DEVICE: spes
-    OEM: xiaomi
+    DT_LINK: https://github.com/ping2109/android_device_samsung_gto
+    DEVICE: gto
+    OEM: samsung
     DT_PATH: device/$OEM/$DEVICE
-    TARGET: bootimage
+    TARGET: recoveryimage
     EXTRA_CMD: # git clone https://github.com/OrangeFoxRecovery/Avatar.git misc
     OUTPUT: recovery.img
-    LUNCH: twrp_spes-eng
+    LUNCH: twrp_gto-eng
     GH_NAME: ${{ secrets.GH_NAME }}
     GH_MAIL: ${{ secrets.GH_MAIL }}
     
@@ -57,8 +57,6 @@ task:
       - repo init --depth=1 -u $MANIFEST 
       - repo sync -j8 --force-sync --no-tags --no-clone-bundle
       - git clone $DT_LINK $DT_PATH
-      - git clone https://github.com/boedhack99/kernel_xiaomi_spes kernel/xiaomi/spes
-      - git clone https://github.com/minimal-manifest-twrp/platform_external_busybox external/busybox
       - echo "============================"
       - echo "Syncing Complete!"
       - echo "============================"
