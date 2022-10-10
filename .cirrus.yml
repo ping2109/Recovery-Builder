@@ -1,13 +1,13 @@
 env:
-    MANIFEST: https://github.com/ping2109/device_samsung_j7xelte-twrp.git
-    DT_LINK: https://github.com/ping2109/device_samsung_j7xelte-twrp.git
-    DEVICE: j7xelte
+    MANIFEST: https://github.com/TeamWin/android_device_samsung_beyond0lte.git
+    DT_LINK: https://github.com/TeamWin/android_device_samsung_beyond0lte.git
+    DEVICE: beyond0lte
     OEM: samsung
     DT_PATH: device/$OEM/$DEVICE
     TARGET: recoveryimage
     EXTRA_CMD: 
     OUTPUT: OrangeFox*.zip
-    LUNCH: omni_j7xelte-eng
+    LUNCH: omni_beyond0lte-eng
 
 task:
   name: "Setting Up, Syncing, Building and Uploading..."
@@ -33,6 +33,7 @@ task:
        - cd ~/scripts
        - sudo bash setup/android_build_env.sh
        - cd ~
+       - sudo apt install python-is-python2
   
   Neofetch_script:
        - neofetch
@@ -66,7 +67,7 @@ task:
       - . build/envsetup.sh
       - . $DT_PATH/vendorsetup.sh
       - $EXTRA_CMD
-      - export OF_MAINTAINER="ping2109"
+      - export OF_MAINTAINER="Katsu (ping2109)"
       - export ALLOW_MISSING_DEPENDENCIES=true
       - export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
       - export LC_ALL="C"
