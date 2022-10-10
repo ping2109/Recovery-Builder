@@ -33,7 +33,7 @@ task:
        - cd ~/scripts
        - sudo bash setup/android_build_env.sh
        - cd ~
-       - sudo apt install python-is-python2
+       - sudo apt install python-is-python2 -y
   
   Neofetch_script:
        - neofetch
